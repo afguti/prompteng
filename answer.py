@@ -3,11 +3,10 @@ import sys
 import openai
 
 #lines below are to add api key as an env variable
-#import os
-#from dotenv import load_dotenv, find_dotenv_ = load_dotenv(find_dotenv())
-#openai.api_key  = os.getenv('OPENAI_API_KEY')
-
-openai.api_key = "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"
+import os
+from dotenv import load_dotenv, find_dotenv
+_ = load_dotenv(find_dotenv())
+openai.api_key  = os.getenv('OPENAI_API_KEY')
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
     messages = [{"role": "user", "content": prompt}]
