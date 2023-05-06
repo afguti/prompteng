@@ -25,7 +25,7 @@ def execute():
 	text = f"""{entra}"""
 	prompt = f"""Answer the question delimited by the backticks. ```{text}```"""
 	response = get_completion(prompt)
-	print(response) #FOR CONTROL
+	print(response) #The output
 
 def main():
 	if len(sys.argv) < 2:	
