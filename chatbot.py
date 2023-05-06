@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #import sys
 import openai
-
+import re
 #lines below are to add api key as an env variable
 import os
 from dotenv import load_dotenv, find_dotenv
@@ -30,7 +30,15 @@ def default():
 	print("Empty!")
 
 def execute():
-    context = [{'role':'system', 'content':"""You are a friendly chatbot"""}]
+    with open("./systems/system", "r") as file:
+        text = file.read()
+    text = re.sub(r'\n\s*\n', '\n', text)
+    lines = text.split("\n")
+    for i in range(len(lines)):
+        if len(lines[i]) > 0 and not re.match(r'\W', lines[i][-1]):
+            lines[i] += "."
+    text = " ".join(lines)
+    context = [{'role':'system', 'content':f"""{text}"""}]
     while True:
         user_input = input("You: ")
         context.append({'role':'user', 'content':f"{user_input}"})
