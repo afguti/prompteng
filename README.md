@@ -8,7 +8,7 @@ This script answer questions and is a practice of one of the principles of promp
 #### eigogpt.py
 This is an ai assitant that helps to incorporate new words to the learner vocabulary. 
 
-# Audio Transcription Module record.py
+# Audio Transcription Module recorder.py
 
 This module allows you to record audio and transcribe it using the OpenAI API.
 
