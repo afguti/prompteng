@@ -34,7 +34,7 @@ Recording audio. Press Enter to stop...
 
 Recording stopped.
 Out[2]: "Hey, this is just a try. It's almost 1.52. Thanks!"
-
+```
 graph LR
 A[Start] --> B(Record Audio)
 B --> C{Enter Key Pressed?}
