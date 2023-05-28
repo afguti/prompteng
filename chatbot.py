@@ -5,6 +5,7 @@ import os
 from dotenv import load_dotenv, find_dotenv
 from recorder import record_audio as record
 import threading
+import subprocess
 
 _ = load_dotenv(find_dotenv())
 openai.api_key = os.getenv('OPENAI_API_KEY')
@@ -51,6 +52,10 @@ def execute():
         print("You: " + user_input)
         context.append({'role':'user', 'content':f"{user_input}"})
         response = get_completion_from_message(context, temperature=0.3)
+        #tts goes here
+        answ = response.replace('"','\\"')
+        command = f'mimic3 --voice en_US/vctk_low \"{answ}\"'
+        subprocess.run(command, shell=True)
         context.append({'role':'assistant', 'content':f"{response}"})
         print("Chatbot: ", response)
 
